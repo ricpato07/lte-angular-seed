@@ -1,0 +1,64 @@
+<div class="content-wrapper">
+    <div ui-view>
+        <section class="content-header">
+            <h4>
+                Consulta de tarjetas
+            </h4>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-md-12 col-md-offset-0">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <i class="ion ion-ios-paper-outline"></i>
+                            <h3 class="box-title">Tarjetas capturadas</h3>
+                        </div>
+                        <div class="box-body">
+                            <table class="table table-bordered table-hover">
+                                <thead>
+                                    <tr>
+                                        <th>BCA / folio</th>
+                                        <th>Usuario</th>
+                                        <th>Cliente</th>
+                                        <th>RFC cliente</th>
+                                        <th>Empresa</th>
+                                        <th>RFC Empresa</th>
+                                        <th class="centro">Identificación oficial</th>
+                                        <th class="centro">Comprobante de domicilio</th>
+                                        <th class="centro">Comprobante de ingresos</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr ng-repeat="item in filteredlist">
+                                        <td>{{item.llave_cliente}}</td>
+                                        <td>{{item.usuario}}</td>
+                                        <td>{{item.nombre_uno}} {{item.nombre_dos}} {{item.ap_paterno}} {{item.ap_materno}}</td>
+                                        <td>{{item.rfc}}</td>
+                                        <td>{{item.nom_empresa}}</td>
+                                        <td>{{item.rfc_empresa}}</td>
+                                        <td class="centro"><a ng-click="openmodal(item.ife_docum.ruta_documento)"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                        <td class="centro"><a ng-click="openmodal(item.domicilio_docum.ruta_documento)"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                        <td class="centro"><a ng-click="openmodal(item.ingresos_docum.ruta_documento)"><i class="fa fa-download" aria-hidden="true"></i></a></td>
+                                    </tr>        
+                                </tbody>
+                            </table>
+                            <div ng-hide="lista.length == 0" style="text-align: center;">
+                                <pagination 
+                                    ng-model="currentPage"
+                                    ng-change="pagination(currentPage)"
+                                    total-items="lista.length"
+                                    max-size="maxSize"  
+                                    boundary-links="true"
+                                    previous-text = "<"
+                                    next-text = ">"
+                                    first-text = "<<"
+                                    last-text=">>">
+                                </pagination>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>
