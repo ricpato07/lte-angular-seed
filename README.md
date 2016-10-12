@@ -1,6 +1,20 @@
 # angular-lte
 Template admin-lte para Angular 1.5.8
 
+Utiliza las siguientes librerias
+"angular": "1.5.8",  --Libreria principal de angular
+"angular-bootstrap": "0.13.0",
+ "angular-ui-router": "0.2.15",
+"font-awesome": "4.5.0",
+"jquery": "^3.1.0",
+"bootstrap": "~3.3.6",
+"angular-ui-grid": "^3.2.1",
+"Ionicons": "ionicons#2.0.1",
+"restangular": "^1.5.2",
+"webcam-directive": "~3.0.0",
+"angular-base64-upload": "~0.1.11",
+"angular-bind-html-compile": "^1.3.0"
+
 ### Clonar proyecto
 
 Clonar repositorio de lte-angular-seed utilizando [git][git]:
