@@ -2,18 +2,19 @@
 Template admin-lte para Angular 1.5.8
 
 Utiliza las siguientes librerias
-"angular": "1.5.8",  --Libreria principal de angular
-"angular-bootstrap": "0.13.0",
- "angular-ui-router": "0.2.15",
-"font-awesome": "4.5.0",
-"jquery": "^3.1.0",
-"bootstrap": "~3.3.6",
-"angular-ui-grid": "^3.2.1",
-"Ionicons": "ionicons#2.0.1",
-"restangular": "^1.5.2",
-"webcam-directive": "~3.0.0",
-"angular-base64-upload": "~0.1.11",
-"angular-bind-html-compile": "^1.3.0"
+
+- **"angular": "1.5.8"**  Libreria principal de angular
+- **"angular-bootstrap": "0.13.0"** Libreria para enlazar angular con bootstrap
+- **"angular-ui-router": "0.2.15"** Libreria para manejar las rutas state
+- **"font-awesome": "4.5.0"** Libreria para los íconos font-awesome
+- **"jquery": "^3.1.0"** Libreria para la funcionalidad de jquery
+- **"bootstrap": "~3.3.6"** Libreria de bootstrap
+- **"angular-ui-grid": "^3.2.1"** Libreria para uso de tablas de datos
+- **"Ionicons": "ionicons#2.0.1"** Libreria para utilizar los íconos de ionic
+- **"restangular": "^1.5.2"** Libreria para realizar consultas a WebServices REST
+- **"webcam-directive": "~3.0.0"** Libreria para utilizar la cámara web desde el navegador compatible con Chrome
+- **"angular-base64-upload": "~0.1.11"** Libreria para subir archivos como base 64
+- **"angular-bind-html-compile": "^1.3.0"** Libreria para renderizar el código html de un string
 
 ### Clonar proyecto
 
