@@ -3,8 +3,8 @@ Template admin-lte para Angular 1.5.8
 
 Utiliza las siguientes librerias
  - **"angular": "1.5.8"**  Libreria principal de angular
-"angular-bootstrap": "0.13.0",
- "angular-ui-router": "0.2.15",
+ - **"angular-bootstrap":"0.13.0"** 
+ - "angular-ui-router": "0.2.15",
 "font-awesome": "4.5.0",
 "jquery": "^3.1.0",
 "bootstrap": "~3.3.6",
