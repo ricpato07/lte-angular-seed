@@ -1,8 +1,13 @@
 'use strict';
 
 angular.module('myApp')
-        .controller('TarjetaBasicaController', ['$scope', '$timeout', 'ValidaService', 'ConsultaService', 'WebCamService', 'MessageService',
-            function ($scope, $timeout, ValidaService, ConsultaService, WebCamService, MessageService) {
+        .controller('TarjetaBasicaController', ['$scope', '$timeout', 'ValidaService', 'ConsultaService', 'WebCamService', 'MessageService','AuthService',
+            function ($scope, $timeout, ValidaService, ConsultaService, WebCamService, MessageService,AuthService) {
+
+                var datos_usuario = AuthService.getDatosUsuario();
+                console.log("datos_usuario");
+                console.log(datos_usuario);
+                
 
                 $scope.cat = {};
                 $scope.forma = {};
@@ -36,7 +41,7 @@ angular.module('myApp')
                                 console.log("Exception: ", err)
                             });
                 };
-                $scope.getTiposId();
+//                $scope.getTiposId();
 
 //                $scope.cat.nombre_uno = "Juan";
 //                $scope.cat.nombre_dos = "Carlos";

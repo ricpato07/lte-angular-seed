@@ -1,9 +1,8 @@
 'use strict';
 
 angular.module('myApp')
-        .controller('MainController', ['$scope','$rootScope',
-            function ($scope,$rootScope) {
-
+        .controller('MainController', ['$scope','$rootScope','AuthService',
+            function ($scope,$rootScope,AuthService) {
 
                 $rootScope.class_menu = "sidebar-mini";
                 $scope.bcollapse = false;
@@ -16,6 +15,15 @@ angular.module('myApp')
                     }
                     $scope.bcollapse = !$scope.bcollapse;
                 };
-
+                
+                $scope.logout = function(){
+                    AuthService.logout();
+                };
+                
+                $scope.getUserLogged = function(){
+                    $rootScope.usuario = AuthService.getDatosUsuario();
+                };
+                
+                
             }]);
 

@@ -12,10 +12,21 @@
         <a ng-click="collapse()" class="sidebar-toggle" data-toggle="offcanvas" role="button">
             <span class="sr-only">Toggle navigation</span>
         </a>
+        <div class="navbar-custom-menu">
 
-        <div class="pull-right title_header">
-            <span><b>American Express</b></span>
+            <ul class="nav navbar-nav">
+                <li class="dropdown messages-menu">
+                    <div class="pull-right title_header">
+                        American Express
+                    </div>
+                </li>
+                <li class="dropdown user user-menu">
+                    <a ng-click="logout()" class="dropdown-toggle">
+                        <span class="hidden-xs">{{session.datosUsuario.user}}</span>
+                        <i style="margin-left: 10px;" class="fa fa-sign-out" aria-hidden="true"></i>
+                    </a>
+                </li>
+            </ul>
         </div>
-
     </nav>
 </header>
