@@ -1,5 +1,17 @@
 # angular-lte
-Template admin-lte para Angular 1.5.8
+Template admin-lte para Angular 1.5.8 con las siguientes funcionalidades:
+
+- Template con menu izquierdo, header, footer y area para carga de páginas.
+- Login que redirige a la página de inicio e inicia una sesión en el navegador. 
+  * Esta durará hasta que se haga logout o se cierre el navegador.
+- Formulario con validaciones de campos.
+- * Webcam para navegador
+- * Adjuntar una imagen
+- Listar registros y mostrarlos en una tabla html con paginador
+  - Mostrar una imagen con modal
+- Listar registros y mostrarlos en una tabla de ui-grid
+  - Mostrar una imagen con modal
+
 
 Utiliza las siguientes librerias
 

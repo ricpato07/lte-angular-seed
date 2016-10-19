@@ -68,5 +68,10 @@ angular.module('myApp', [
                             templateUrl: 'views/panel/consulta_tarjetas.html',
                             controller: 'ConsultaTarjetaController'
                         })
+                          .state('app.consulta_tarjetas_grid', {
+                            url: '/consulta_tarjetas_grid',
+                            templateUrl: 'views/panel/consulta_tarjetas_grid.html',
+                            controller: 'ConsultaTarjetagridController'
+                        })
 
             }]);

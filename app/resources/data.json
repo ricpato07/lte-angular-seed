@@ -1,0 +1,182 @@
+[
+  {
+    "id_tarjeta": 4,
+    "llave_datos_tarjeta": "3453453",
+    "nom_empresa": "SABRITAS",
+    "rfc_empresa": "234234",
+    "rfc_rlegal": "234324",
+    "nombre_soli": null,
+    "rfc_soli": null,
+    "fecha_creacion": "2016-10-10T17:42:10",
+    "llave_cliente": "3453453",
+    "nombre_uno": "feliciano",
+    "nombre_dos": null,
+    "ap_paterno": "perez",
+    "ap_materno": "gomez",
+    "nombre_m_tarjeta": "FELICIANO",
+    "na_dia": 12,
+    "na_mes": 10,
+    "na_anio": 2016,
+    "rfc": "345345",
+    "tipo_id": 1,
+    "num_id": "345345",
+    "vigencia": 2018,
+    "domicilio": "345345",
+    "usuario": "demo demo ap demo am",
+    "nombre_usuario": "demo",
+    "apellido_paterno_usuario": "demo ap",
+    "apellido_materno_usuario": "demo am",
+    "documentos": [
+      {
+        "id_documento": 3,
+        "descripcion_documento": "COMPROBANTE DE INGRESOS",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/3_f6bfdddb1eac4267939c2477046a8ab3.jpg"
+      },
+      {
+        "id_documento": 1,
+        "descripcion_documento": "IDENTIFICACIÓN OFICIAL",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/1_b9381ee6223d460dae529b7d82380e5c.jpg"
+      },
+      {
+        "id_documento": 2,
+        "descripcion_documento": "COMPROBANTE DE DOMICILIO",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/2_c6a3257d44ae4793a063b44f2c193880.png"
+      }
+    ]
+  },
+  {
+    "id_tarjeta": 3,
+    "llave_datos_tarjeta": "234234",
+    "nom_empresa": "coca cola",
+    "rfc_empresa": "32234",
+    "rfc_rlegal": "2334234",
+    "nombre_soli": null,
+    "rfc_soli": null,
+    "fecha_creacion": "2016-10-10T16:59:22",
+    "llave_cliente": "234234",
+    "nombre_uno": "jose",
+    "nombre_dos": null,
+    "ap_paterno": "perez",
+    "ap_materno": "prado",
+    "nombre_m_tarjeta": "JOSE PEREZ PRADO",
+    "na_dia": 12,
+    "na_mes": 10,
+    "na_anio": 2016,
+    "rfc": "234234",
+    "tipo_id": 3,
+    "num_id": "234234",
+    "vigencia": 2016,
+    "domicilio": "234234",
+    "usuario": "demo demo ap demo am",
+    "nombre_usuario": "demo",
+    "apellido_paterno_usuario": "demo ap",
+    "apellido_materno_usuario": "demo am",
+    "documentos": [
+      {
+        "id_documento": 2,
+        "descripcion_documento": "COMPROBANTE DE DOMICILIO",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/2_2acd09777686432ea0150c7b10186fea.jpg"
+      },
+      {
+        "id_documento": 1,
+        "descripcion_documento": "IDENTIFICACIÓN OFICIAL",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/1_be375c107cb343ef9a7f97833a39eeee.jpg"
+      },
+      {
+        "id_documento": 3,
+        "descripcion_documento": "COMPROBANTE DE INGRESOS",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/3_0b1b453aa53c4b4d915a31d28df4cb0e.jpg"
+      }
+    ]
+  },
+  {
+    "id_tarjeta": 2,
+    "llave_datos_tarjeta": "34535",
+    "nom_empresa": "juan",
+    "rfc_empresa": "2342",
+    "rfc_rlegal": "234234",
+    "nombre_soli": null,
+    "rfc_soli": null,
+    "fecha_creacion": "2016-10-10T16:02:46",
+    "llave_cliente": "34535",
+    "nombre_uno": "hugo",
+    "nombre_dos": null,
+    "ap_paterno": "flores",
+    "ap_materno": "perez",
+    "nombre_m_tarjeta": "345345",
+    "na_dia": 12,
+    "na_mes": 10,
+    "na_anio": 2016,
+    "rfc": "345345",
+    "tipo_id": 1,
+    "num_id": "3424",
+    "vigencia": 2018,
+    "domicilio": "conocido",
+    "usuario": "demo demo ap demo am",
+    "nombre_usuario": "demo",
+    "apellido_paterno_usuario": "demo ap",
+    "apellido_materno_usuario": "demo am",
+    "documentos": [
+      {
+        "id_documento": 2,
+        "descripcion_documento": "COMPROBANTE DE DOMICILIO",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/2_73a29d4f360b472896fe8c128c668d2f.png"
+      },
+      {
+        "id_documento": 3,
+        "descripcion_documento": "COMPROBANTE DE INGRESOS",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/3_d0ef496c95ff4e5894e994ad8fe725b2.png"
+      },
+      {
+        "id_documento": 1,
+        "descripcion_documento": "IDENTIFICACIÓN OFICIAL",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/1_8a7d86d235df4b1ebf025502ed5da107.jpg"
+      }
+    ]
+  },
+  {
+    "id_tarjeta": 1,
+    "llave_datos_tarjeta": "555556",
+    "nom_empresa": "bimbo",
+    "rfc_empresa": "234234",
+    "rfc_rlegal": "234234",
+    "nombre_soli": null,
+    "rfc_soli": null,
+    "fecha_creacion": "2016-10-10T16:00:14",
+    "llave_cliente": "555556",
+    "nombre_uno": "Juan",
+    "nombre_dos": null,
+    "ap_paterno": "Palencia",
+    "ap_materno": "Flores",
+    "nombre_m_tarjeta": "JUAN PALENCIA",
+    "na_dia": 10,
+    "na_mes": 10,
+    "na_anio": 2016,
+    "rfc": "SDFSDF",
+    "tipo_id": 1,
+    "num_id": "345345",
+    "vigencia": 2018,
+    "domicilio": "domicilio conocido",
+    "usuario": "demo demo ap demo am",
+    "nombre_usuario": "demo",
+    "apellido_paterno_usuario": "demo ap",
+    "apellido_materno_usuario": "demo am",
+    "documentos": [
+      {
+        "id_documento": 3,
+        "descripcion_documento": "COMPROBANTE DE INGRESOS",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/3_251cd81c4ba949f29b48e44650bb33f3.png"
+      },
+      {
+        "id_documento": 2,
+        "descripcion_documento": "COMPROBANTE DE DOMICILIO",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/2_f553e2ee48ea4744bb509d69be5420e0.png"
+      },
+      {
+        "id_documento": 1,
+        "descripcion_documento": "IDENTIFICACIÓN OFICIAL",
+        "ruta_documento": "https://www.adea.com.mx/amex/Documentos/1_7c5f6b38b9db4131b1be767d1b3ebdfb.jpg"
+      }
+    ]
+  }
+]

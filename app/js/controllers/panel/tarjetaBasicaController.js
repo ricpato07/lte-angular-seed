@@ -1,63 +1,60 @@
 'use strict';
 
 angular.module('myApp')
-        .controller('TarjetaBasicaController', ['$scope', '$timeout', 'ValidaService', 'ConsultaService', 'WebCamService', 'MessageService','AuthService',
-            function ($scope, $timeout, ValidaService, ConsultaService, WebCamService, MessageService,AuthService) {
+        .controller('TarjetaBasicaController', ['$scope', 'ValidaService', 'ConsultaService', 'WebCamService', 'MessageService', 'AuthService', 'CalendarService',
+            function ($scope, ValidaService, ConsultaService, WebCamService, MessageService, AuthService, CalendarService) {
 
-                var datos_usuario = AuthService.getDatosUsuario();
-                console.log("datos_usuario");
-                console.log(datos_usuario);
+                AuthService.isLoggedIn();
                 
-
                 $scope.cat = {};
                 $scope.forma = {};
-                $scope.calendar = {};
-                $scope.format = ValidaService.formats_date()[0];
-
-                $scope.dateOptions = {
-                    formatYear: 'yy',
-                    yearRange: 1,
-                    startingDay: 1
-                };
+                $scope.calendar = CalendarService.getOptions($scope);
 
 
                 $scope.channel_one = WebCamService.getOptions();
                 $scope.channel_two = WebCamService.getOptions();
                 $scope.channel_three = WebCamService.getOptions();
 
-                $scope.open = function ($event, opened) {
-                    $event.preventDefault();
-                    $event.stopPropagation();
-                    $scope.calendar[opened] = !$scope.calendar[opened];
-                };
 
                 $scope.getTiposId = function () {
-                    var metodo = "catdocumento";
-                    ConsultaService.getRestAngular(metodo)
+//                    método comentado para hacer una petición al WebService
+//                    var metodo = "catdocumento";
+//                    ConsultaService.getRestAngular(metodo)
+//                            .then(function (result) {
+//                                $scope.tiposidlist = result;
+//                            })
+//                            .catch(function (err) {
+//                                console.log("Exception: ", err)
+//                            });
+
+                    //Obtiene la información de un json local
+                    var name = "tipo_documentos";
+                    ConsultaService.getLocalJSON(name)
                             .then(function (result) {
-                                $scope.tiposidlist = result;
+                                $scope.tiposidlist = result.data;
                             })
                             .catch(function (err) {
-                                console.log("Exception: ", err)
+                                console.log("Exception: ", err);
                             });
                 };
-//                $scope.getTiposId();
+                $scope.getTiposId();
 
-//                $scope.cat.nombre_uno = "Juan";
-//                $scope.cat.nombre_dos = "Carlos";
-//                $scope.cat.ap_paterno = "Santana";
-//                $scope.cat.ap_materno = "Flores";
-//                $scope.cat.nombre_m_tarjeta = "JUAN CARLOS SANTANA FLOR";
-//                $scope.cat.fecha_nacimiento = new Date();
-//                $scope.cat.rfc = "FESW840526";
-//                $scope.cat.tipo_id = 1;
-//                $scope.cat.num_id = 11122222;
-//                $scope.cat.vigencia = 2018;
-//                $scope.cat.domicilio = "Domicilio conocido";
-//                $scope.cat.llave = "SDFSDFSDF2343";
-//                $scope.cat.nom_empresa = "Bimbo";
-//                $scope.cat.rfc_empresa = "rfcbimbo";
-//                $scope.cat.rfc_rlegal = "rfclegal";
+                //datos de ejemplo
+                $scope.cat.nombre_uno = "Juan";
+                $scope.cat.nombre_dos = "Carlos";
+                $scope.cat.ap_paterno = "Santana";
+                $scope.cat.ap_materno = "Flores";
+                $scope.cat.nombre_m_tarjeta = "JUAN CARLOS SANTANA FLOR";
+                $scope.cat.fecha_nacimiento = new Date();
+                $scope.cat.rfc = "FESW840526";
+                $scope.cat.tipo_id = 1;
+                $scope.cat.num_id = 11122222;
+                $scope.cat.vigencia = 2018;
+                $scope.cat.domicilio = "Domicilio conocido";
+                $scope.cat.llave = "SDFSDFSDF2343";
+                $scope.cat.nom_empresa = "Bimbo";
+                $scope.cat.rfc_empresa = "rfcbimbo";
+                $scope.cat.rfc_rlegal = "rfclegal";
 
 
                 $scope.$watch('cat.tipo_id', function (newValue, oldValue) {
@@ -67,7 +64,7 @@ angular.module('myApp')
                         }
                     }
                 });
-                
+
 
                 $scope.onError_one = function (err) {
                     console.log("onError_one");
@@ -172,53 +169,55 @@ angular.module('myApp')
                     parameters.datos_tarjeta = params;
                     parameters.cliente = params;
                     parameters.documentos = [];
-                    
+
                     var documento = {};
                     var file = $scope.channel_one.file;
                     documento.id_documento = 1;
                     documento.ext = file.filename == undefined ? "png" : file.filename.substring(file.filename.indexOf("."));
                     documento.doc_base64 = file.base64;
-                    documento.doc_base64 = documento.doc_base64.replace("data:image/png;base64,","");
+                    documento.doc_base64 = documento.doc_base64.replace("data:image/png;base64,", "");
                     parameters.documentos.push(documento);
-                    
+
                     documento = {};
                     file = $scope.channel_two.file;
                     documento.id_documento = 2;
                     documento.ext = file.filename == undefined ? "png" : file.filename.substring(file.filename.indexOf("."));
                     documento.doc_base64 = file.base64 == undefined ? "png" : file.base64;
-                    documento.doc_base64 = documento.doc_base64.replace("data:image/png;base64,","");
+                    documento.doc_base64 = documento.doc_base64.replace("data:image/png;base64,", "");
                     parameters.documentos.push(documento);
                     documento = {};
-                    
+
                     file = $scope.channel_three.file;
                     documento.id_documento = 3;
                     documento.ext = file.filename == undefined ? "png" : file.filename.substring(file.filename.indexOf("."));
                     documento.doc_base64 = file.base64 == undefined ? "png" : file.base64;
-                    documento.doc_base64 = documento.doc_base64.replace("data:image/png;base64,","");
+                    documento.doc_base64 = documento.doc_base64.replace("data:image/png;base64,", "");
                     parameters.documentos.push(documento);
 
+//                  Método comentado que realiza un post con Restangular
+//                    ConsultaService.setRestAngular(metodo, parameters)
+//                            .then(function (res) {
+//                                $scope.limpiar();
+//                                MessageService.success($scope, res.descripcion);
+//                            })
+//                            .catch(function (err) {
+//                                console.log("Exception: ", err);
+//                                if (err.data !== null) {
+//                                    MessageService.error($scope, err.data.descripcion);
+//                                } else {
+//                                    $scope.message = {};
+//                                    MessageService.error($scope, "Ocurrió un error con el servidor");
+//                                }
+//                            });
 
-                    ConsultaService.setRestAngular(metodo, parameters)
-                            .then(function (res) {
-                                console.log("res");
-                                console.log(res);
-                                $scope.limpiar();
-                                MessageService.success($scope, res.descripcion);
-                            })
-                            .catch(function (err) {
-                                console.log("Exception: ", err);
-                                if (err.data !== null) {
-                                     MessageService.error($scope, err.data.descripcion);
-                                } else {
-                                    $scope.message = {};
-                                     MessageService.error($scope, "Ocurrió un error con el servidor");
-                                }
-                            });
+                    $scope.limpiar();
+                    MessageService.success($scope, "Datos guardados correctamente");
+
                 };
 
-               
+
                 $scope.close_message = function () {
-                    MessageService.close($scope);
+                    MessageService.close();
                 };
 
             }]);

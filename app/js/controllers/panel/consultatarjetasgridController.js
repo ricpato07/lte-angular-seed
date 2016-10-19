@@ -1,22 +1,28 @@
 'use strict';
 
 angular.module('myApp')
-        .controller('ConsultaTarjetaController', ['$scope', '$modal', 'ConsultaService', 
-            function ($scope, $modal, ConsultaService) {
+        .controller('ConsultaTarjetagridController', ['$scope', '$modal', '$timeout', 'ConsultaService', 'UtilService',
+            function ($scope, $modal, $timeout, ConsultaService, UtilService) {
 
-                $scope.filteredlist = [];
-                $scope.currentPage = 1;
-                $scope.numPerPage = 10;
-                $scope.maxSize = 5;
-                $scope.lista = [];
+                $scope.gridOptions = UtilService.gridOptions();
+                $scope.gridOptions.columnDefs = [{field: 'llave_cliente', displayName: 'BCA / folio', headerCellClass: 'cell_center', cellClass:'cell_center'},
+                    {field: 'usuario', displayName: 'Usuario',headerCellClass: 'cell_center'},
+                    {field: 'getNombreCompleto()', displayName: 'Cliente',headerCellClass: 'cell_center'},
+                    {field: 'rfc', displayName: 'RFC',headerCellClass: 'cell_center'},
+                    {field: 'nom_empresa', displayName: 'Empresa',headerCellClass: 'cell_center'},
+                    {field: 'rfc_empresa', displayName: 'RFC Empresa',headerCellClass: 'cell_center',cellClass:'cell_center'},
+                    {displayName: 'IFE', name: 'ife', cellTemplate: '<div> <a ng-click="grid.appScope.openmodal(row.entity.ife_docum.ruta_documento)">' +
+                                '<i class="fa fa-download" aria-hidden="true"></a>' +
+                                '</div>',headerCellClass: 'cell_center',cellClass:'cell_center'}
+                ];
 
                 $scope.cargainfo = function () {
                     //var metodo = "consultas/registros";
                     var name = "data";
                     //ConsultaService.getRestAngular(metodo)
                     ConsultaService.getLocalJSON(name)
-                            .then(function (result) {
-                                $scope.lista = result.data;
+                            .then(function (promise) {
+                                var result = promise.data;
                                 //colocar documentos en arreglo principal
                                 for (var i = 0; i < result.length; i++) {
                                     for (var j = 0; j < result[i].documentos.length; j++) {
@@ -34,22 +40,25 @@ angular.module('myApp')
                                         }
                                     }
                                 }
-                                $scope.pagination(1);
+
+                                $scope.result = result;
+                               
+                                angular.forEach($scope.result, function (row) {
+                                    row.getNombreCompleto = function () {
+                                        return this.nombre_uno + ' ' + this.nombre_dos + ' ' + this.ap_paterno + ' ' + this.ap_materno;
+                                    };
+                                    row.getLink = function () {
+                                        return  this.ife_docum.ruta_documento;
+                                    };
+                                });
+
                             })
                             .catch(function (men) {
                                 console.log("Exception: " + men);
-                            })
+                            });
                 };
                 $scope.cargainfo();
 
-
-                $scope.pagination = function (currentPage) {
-                    $scope.currentPage = currentPage;
-                    var begin = (($scope.currentPage - 1) * $scope.numPerPage)
-                            , end = begin + $scope.numPerPage;
-
-                    $scope.filteredlist = $scope.lista.slice(begin, end);
-                };
 
                 $scope.openmodal = function (image) {
                     var modalInstance = $modal.open({
@@ -66,10 +75,10 @@ angular.module('myApp')
 
 
             }])
-        .controller('modalController',['$scope','$modalInstance', function ($scope, $modalInstance) {
+        .controller('modalController', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
 
-            $scope.close = function () {
-                $modalInstance.close();
-            };
+                $scope.close = function () {
+                    $modalInstance.close();
+                };
 
-        }]);
+            }]);

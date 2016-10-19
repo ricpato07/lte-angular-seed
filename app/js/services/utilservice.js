@@ -101,34 +101,6 @@ angular.module('myApp')
                             }
                         });
                     },
-                    preventDefault: function (e) {
-                        e = e || window.event;
-                        if (e.preventDefault)
-                            e.preventDefault();
-                        e.returnValue = false;
-                    },
-                    preventDefaultForScrollKeys: function (e) {
-                        if (keys[e.keyCode]) {
-                            preventDefault(e);
-                            return false;
-                        }
-                    },
-                    disableScroll: function () {
-                        if (window.addEventListener) // older FF
-                            window.addEventListener('DOMMouseScroll', this.preventDefault, false);
-                        window.onwheel = this.preventDefault; // modern standard
-                        window.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
-                        window.ontouchmove = this.preventDefault; // mobile
-                        document.onkeydown = this.preventDefaultForScrollKeys;
-                    },
-                    enableScroll: function () {
-                        if (window.removeEventListener)
-                            window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
-                        window.onmousewheel = document.onmousewheel = null;
-                        window.onwheel = null;
-                        window.ontouchmove = null;
-                        document.onkeydown = null;
-                    },
                     pieChart: function () {
                         return {
                             chart: {
@@ -157,7 +129,7 @@ angular.module('myApp')
                                         bottom: 0,
                                         left: 0
                                     }
-                                },
+                                }
 //                                pie: {
 //                                    dispatch: {
 //                                        elementClick: function (t, u) {
@@ -205,7 +177,7 @@ angular.module('myApp')
                                     }
                                 }
                             }
-                        }
+                        };
                     },
                     gridOptions: function () {
                         return{
@@ -215,9 +187,10 @@ angular.module('myApp')
                             maxVisibleColumnCount: 100000,
                             paginationPageSizes: [10, 25, 50, 100],
                             paginationPageSize: 10,
-                            data: 'result'
-                        }
+                            data: 'result',
+                            //columnDefs: [{field: 'name', displayName: 'Name'}]
+                        };
                     }
-                }
+                };
             }]);
 

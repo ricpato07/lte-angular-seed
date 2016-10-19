@@ -2,7 +2,7 @@
 
 angular.module('myApp')
         .factory('MessageService', function () {
-
+            var $scope;
             return {
                 getMessage: function (text, type) {
                     var message = '<div ng-if="true">\n\
@@ -17,25 +17,28 @@ angular.module('myApp')
                     message = message.replace("content.type", type);
                     return message;
                 },
-                success: function ($scope,text) {
+                success: function (scope,text) {
+                    $scope = scope;
                     $scope.message = {};
                     $scope.message.html = this.getMessage(text, 'success');
                 },
-                error: function ($scope, text) {
+                error: function (scope, text) {
+                    $scope = scope;
                     $scope.message = {};
                     $scope.message.html = this.getMessage(text, 'danger');
                 },
-                warning: function ($scope, text) {
+                warning: function (scope, text) {
+                     $scope = scope;
                     $scope.message = {};
                     $scope.message.html = this.getMessage(text, 'warning');
                 },
-                info: function ($scope, text) {
+                info: function (scope, text) {
+                     $scope = scope;
                     $scope.message = {};
                     $scope.message.html = this.getMessage(text, 'info');
                 },
-                close: function ($scope) {
+                close: function () {
                     $scope.message.html = null;
                 }
-            }
-
+            };
         });

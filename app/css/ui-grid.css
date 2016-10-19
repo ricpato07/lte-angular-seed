@@ -1,0 +1,39 @@
+.myGrid {
+    width: 100%;
+    min-height: 450px;
+}
+
+.table-html{
+    font-size: 13px;
+}
+
+.table-bordered thead{
+    background-color: #ECF0F5;
+}  
+
+/*paginador ************************/
+/*tamaño del input para la página*/
+.ui-grid-pager-control input {
+    width: 60px;
+}
+/*Diagonal del paginador */
+.ui-grid-pager-control .ui-grid-pager-max-pages-number>* {
+    vertical-align: bottom;
+}
+/*cursor de info que aparece en la diagonal*/
+abbr[title] {
+    cursor:auto;
+    border-bottom: 0px;
+}
+/*mostrar ocultar el buscador de la tabla*/
+.ui-grid-filter-container {
+    /*display: none;*/
+}
+/*que el texto del buscador no tenga negritas */
+input[type="text"].ui-grid-filter-input{
+    font-weight: normal;
+}
+
+.cell_center{
+    text-align: center;
+}

@@ -1,0 +1,14 @@
+[
+  {
+    "id_documento": 1,
+    "descripcion": "IDENTIFICACIÓN OFICIAL"
+  },
+  {
+    "id_documento": 3,
+    "descripcion": "COMPROBANTE DE INGRESOS"
+  },
+  {
+    "id_documento": 2,
+    "descripcion": "COMPROBANTE DE DOMICILIO"
+  }
+]

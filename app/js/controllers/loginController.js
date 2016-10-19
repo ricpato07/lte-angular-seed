@@ -7,7 +7,7 @@ angular.module('myApp')
                 $scope.usuario = {user: null, password: null};
 
                 $scope.ingresar = function () {
-                    AuthService.setDatosUsuario($scope.usuario);
+                    AuthService.setDatosUsuario($scope.usuario, ['tarjeta_basica', 'otro']);
                     $state.go("app.tarjeta_basica");
                 };
 

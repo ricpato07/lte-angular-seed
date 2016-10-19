@@ -239,8 +239,36 @@ angular.module('myApp')
                     year = fecha.getFullYear();
 
                     return new Date(year, month - 1, day);
+                },
+                preventDefault: function (e) {
+                    e = e || window.event;
+                    if (e.preventDefault)
+                        e.preventDefault();
+                    e.returnValue = false;
+                },
+                preventDefaultForScrollKeys: function (e) {
+                    if (keys[e.keyCode]) {
+                        preventDefault(e);
+                        return false;
+                    }
+                },
+                disableScroll: function () {
+                    if (window.addEventListener) // older FF
+                        window.addEventListener('DOMMouseScroll', this.preventDefault, false);
+                    window.onwheel = this.preventDefault; // modern standard
+                    window.onmousewheel = document.onmousewheel = this.preventDefault; // older browsers, IE
+                    window.ontouchmove = this.preventDefault; // mobile
+                    document.onkeydown = this.preventDefaultForScrollKeys;
+                },
+                enableScroll: function () {
+                    if (window.removeEventListener)
+                        window.removeEventListener('DOMMouseScroll', this.preventDefault, false);
+                    window.onmousewheel = document.onmousewheel = null;
+                    window.onwheel = null;
+                    window.ontouchmove = null;
+                    document.onkeydown = null;
                 }
-            };
+            };  //return
         })
         .directive('upperCase', function () {
             return {
@@ -301,59 +329,6 @@ angular.module('myApp')
                     }
                 }
             }])
-//        .directive('dateTimePicker', [function () {
-//                return {
-//                    restrict: 'E',
-//                    require: 'ngModel',
-//                    scope: {
-//                        ngModel: '=',
-//                        ngReadonly: '=?',
-//                        minDate: '=?',
-//                        maxDate: '=?',
-//                        dtpRequired: '=?',
-//                        dateOptions: '=?'
-//                    },
-//                    template: '<div class="row">' +
-//                            '<div class="col-md-6">' +
-//                            '<p class="input-group">' +
-//                            '<input type="text" class="form-control" datepicker-popup="{{format}}"' +
-//                            'ng-model="ngModel" is-open="opened"' +
-//                            'min-date="minDate" max-date="maxDate"' +
-//                            'datepicker-options="dateOptions" date-disabled="disabled(date, mode)"' +
-//                            'ng-required="dtpRequired" close-text="Close" ng-readonly="ngReadonly" ng-click="openPopup()" />' +
-//                            '<span class="input-group-btn">' +
-//                            '<button type="button" class="btn btn-default" ng-click="openPopup($event)">' +
-//                            '<i class="glyphicon glyphicon-calendar"></i></button>' +
-//                            '</span>' +
-//                            '</p>' +
-//                            '</div>' +
-//                            '</div>',
-//                    controller: function ($scope) {
-//                        // check if it was defined.  If not - set a default            
-//                        $scope.dateOptions = $scope.dateOptions || {
-//                            formatYear: 'yy',
-//                            startingDay: 1,
-//                            showWeeks: false
-//                        };
-//
-//                        $scope.openPopup = function ($event) {
-//                            $event.stopPropagation();
-//                            $scope.opened = true;
-//                        };
-//
-//                        // Disable weekend selection
-//                        $scope.disabled = function (date, mode) {
-//                            return (mode === 'day' && (date.getDay() === 0 || date.getDay() === 6));
-//                        };
-//
-//                        $scope.formats = ['dd-MMMM-yyyy', 'yyyy/MM/dd', 'dd.MM.yyyy', 'shortDate'];
-//                        $scope.format = $scope.formats[0];
-//                    },
-//                    link: function ($scope, element, attrs) {
-//
-//                    }
-//                };
-//            }])
         ;
 
         

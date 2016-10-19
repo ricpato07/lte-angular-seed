@@ -3,11 +3,8 @@
 angular.module('myApp')
     .directive('message', function () {
         return {
-            templateUrl: 'views/directives/message.html',
+            template: '<div bind-html-compile="message.html"></div>',
             restrict: 'E',
-            replace: true,
-            scope: {
-                content: '='
-            }
+            replace: true
         }
     });

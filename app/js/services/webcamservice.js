@@ -59,7 +59,6 @@ angular.module('myApp')
                         channel.file = null;
                         channel.badjuntado = false;
                         channel.file_error_tamano = false;
-                        //return channel;
                     }
                 }
             }]);
