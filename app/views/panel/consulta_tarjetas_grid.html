@@ -14,6 +14,12 @@
                             <h3 class="box-title">Tarjetas capturadas</h3>
                         </div>
                         <div class="box-body">
+                            <a ng-if="result.length > 0" ng-click="mostrar_filtros()"><i class="ion ion-search"></i>
+                                <span style="margin-left: 3px;">{{gridOptions.enableFiltering?'Ocultar':'Mostrar'}} filtros</span>
+                            </a>
+                            <a ng-if="result.length > 0" class="bold pull-right" ng-click="exportarExcel()"><i class="fa fa-file-excel-o"></i>
+                                <span style="margin-left: 3px;">Exportar a Excel</span>
+                            </a>
                            <div ui-grid="gridOptions" ui-grid-pagination class="myGrid" ui-grid-resize-columns="true"></div>
                         </div>
                     </div>

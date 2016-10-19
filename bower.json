@@ -33,7 +33,8 @@
         "restangular": "^1.5.2",
         "webcam-directive": "~3.0.0",
         "angular-base64-upload": "~0.1.11",
-        "angular-bind-html-compile": "^1.3.0"
+        "angular-bind-html-compile": "^1.3.0",
+        "alasql": "^0.3.2"
     },
      "private": true
 }

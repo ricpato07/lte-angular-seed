@@ -5,12 +5,14 @@ Template admin-lte para Angular 1.5.8 con las siguientes funcionalidades:
 - Login que redirige a la página de inicio e inicia una sesión en el navegador. 
   * Esta durará hasta que se haga logout o se cierre el navegador.
 - Formulario con validaciones de campos.
-- * Webcam para navegador
-- * Adjuntar una imagen
+  * Webcam para navegador
+  * Adjuntar una imagen
 - Listar registros y mostrarlos en una tabla html con paginador
-  - Mostrar una imagen con modal
+  * Mostrar una imagen con modal
 - Listar registros y mostrarlos en una tabla de ui-grid
-  - Mostrar una imagen con modal
+  * Mostrar una imagen con modal
+  * Mostar filtros para buscar en la tabla
+  * Exportar a Excel valores de la tabla
 
 
 Utiliza las siguientes librerias
@@ -27,6 +29,7 @@ Utiliza las siguientes librerias
 - **"webcam-directive": "~3.0.0"** Libreria para utilizar la cámara web desde el navegador compatible con Chrome
 - **"angular-base64-upload": "~0.1.11"** Libreria para subir archivos como base 64
 - **"angular-bind-html-compile": "^1.3.0"** Libreria para renderizar el código html de un string
+- **"alasql": "^0.3.2"** Librería que exporta un json a Excel
 
 ### Clonar proyecto
 
