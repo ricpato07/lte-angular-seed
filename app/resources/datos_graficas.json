@@ -1,0 +1,18 @@
+[
+    {
+        "nombre": "Juan Perez",
+        "edad": 20
+    },
+    {
+        "nombre": "Alfredo Castillo",
+        "edad": 50
+    },
+    {
+        "nombre": "Rosalinda Gomez",
+        "edad": 30
+    },
+    {
+        "nombre": "Roberto Gomez",
+        "edad": 36
+    }
+]

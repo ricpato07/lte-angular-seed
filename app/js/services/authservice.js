@@ -19,10 +19,11 @@ angular.module('myApp')
                         return $rootScope.session;
                     },
                     isLoggedIn: function () {
-                     var session = this.getSession();
-                         if(session === null) {
-                             $state.go('login');
-                         }
+                        var session = this.getSession();
+                        if (session === null) {
+                            $state.go('login');
+                        }
+                        return true;
                     },
                     getPermisos: function () {
                         return this.getSession().permisos;
@@ -37,6 +38,22 @@ angular.module('myApp')
                             $rootScope.session.permisos = permisos;
                             $rootScope.session.logged = true;
                             this.login($rootScope.session);
+                        }
+                    },
+                    validaPermiso: function (permiso) {
+                        if (this.isLoggedIn()) {
+                            var bencontrado = false;
+                            var session = this.getSession();
+                            if (session !== null) {
+                                var permisos = session.permisos;
+                            }
+                            for (var i = 0; i < permisos.length; i++) {
+                                if (permiso.indexOf(permisos[i].permiso) !== -1) {
+                                    bencontrado = true;
+                                    break;
+                                }
+                            }
+                            return bencontrado;
                         }
                     }
                 };

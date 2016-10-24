@@ -14,6 +14,7 @@ var imagemin = require('gulp-imagemin');
 var cache = require('gulp-cache');
 var replace = require('gulp-replace');
 var rename = require('gulp-rename');
+var filter = require('gulp-filter');
 
 /*
  Rutas del proyecto
@@ -34,11 +35,13 @@ var path = {
     ionicons: 'app/bower_components/Ionicons/fonts/**/*',
     bootstrap: 'app/bower_components/bootstrap/fonts/**/*',
     ui_grid: 'app/bower_components/angular-ui-grid/**/*',
+    resources: 'app/resources/**/*',
     config_file: 'app/config/config.js',
     config_dest: 'app/js/configuration',
     ico: 'app/favicon.ico',
     _404: 'app/404.html'
 };
+var f = filter(['**/*.woff','**/*.woff2','**/*.ttf','**/*.eot','**/*.svg','**/*.ttf'],{restore: true});
 
 /*
  * Configuración de las tareas
@@ -56,10 +59,19 @@ gulp.task('js_css', function () {
             .pipe(gulp.dest('dist'));
 });
 
-gulp.task('fonts', function () {
-    return gulp.src([path.fonts_awesome,path.ionicons,path.bootstrap,path.ui_grid])
+gulp.task('fonts_awesome', function () {
+    return gulp.src([path.fonts_awesome,path.ionicons,path.bootstrap])
+            .pipe(f)
             .pipe(gulp.dest('dist/fonts'));
 });
+
+gulp.task('fonts_ui_grid', function () {
+    return gulp.src(path.ui_grid)
+            .pipe(f)
+            .pipe(gulp.dest('dist/css'));
+});
+
+gulp.task('fonts', ['fonts_awesome', 'fonts_ui_grid']);
 
 gulp.task('html', function () {
     return gulp.src(path.html)
@@ -81,6 +93,11 @@ gulp.task('images', function () {
 gulp.task('resto', function () {
     return gulp.src([path.ico, path._404])
             .pipe(gulp.dest('dist'));
+});
+
+gulp.task('resources', function () {
+    return gulp.src(path.resources)
+            .pipe(gulp.dest('dist/resources'));
 });
 
 gulp.task('config:local', function () {
@@ -122,6 +139,7 @@ gulp.task('build:local', function (callback) {
                 'fonts',
                 'html',
                 'images',
+                'resources',
                 'resto'
             ],
             callback
@@ -135,6 +153,7 @@ gulp.task('build:pruebas', function (callback) {
                 'fonts',
                 'html',
                 'images',
+                'resources',
                 'resto'
             ],
             callback
@@ -148,6 +167,7 @@ gulp.task('build:produccion', function (callback) {
                 'fonts',
                 'html',
                 'images',
+                'resources',
                 'resto'
             ],
             callback

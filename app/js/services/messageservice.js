@@ -4,6 +4,9 @@ angular.module('myApp')
         .factory('MessageService', function () {
             var $scope;
             return {
+                iniScope: function (scope) {
+                    $scope = scope;
+                },
                 getMessage: function (text, type) {
                     var message = '<div ng-if="true">\n\
                                        <div class="alert alert-content.type alert-dismissible" role="alert">\n\
@@ -17,23 +20,19 @@ angular.module('myApp')
                     message = message.replace("content.type", type);
                     return message;
                 },
-                success: function (scope,text) {
-                    $scope = scope;
+                success: function (text) {
                     $scope.message = {};
                     $scope.message.html = this.getMessage(text, 'success');
                 },
-                error: function (scope, text) {
-                    $scope = scope;
+                error: function ( text) {
                     $scope.message = {};
                     $scope.message.html = this.getMessage(text, 'danger');
                 },
-                warning: function (scope, text) {
-                     $scope = scope;
+                warning: function (text) {
                     $scope.message = {};
                     $scope.message.html = this.getMessage(text, 'warning');
                 },
-                info: function (scope, text) {
-                     $scope = scope;
+                info: function (text) {
                     $scope.message = {};
                     $scope.message.html = this.getMessage(text, 'info');
                 },

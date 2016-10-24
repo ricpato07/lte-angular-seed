@@ -135,7 +135,6 @@ angular.module('myApp')
 //                                        elementClick: function (t, u) {
 //                                            console.log('elementClick');
 //                                            console.log(t);
-//                                            $scope.exportarExcel();
 //                                        }
 //                                    }
 //                                }
@@ -143,6 +142,55 @@ angular.module('myApp')
                         };
                     },
                     barChart: function () {
+                        return {
+                            chart: {
+                                type: 'discreteBarChart',
+                                height: 450,
+                                margin: {
+                                    top: 20,
+                                    right: 20,
+                                    bottom: 50,
+                                    left: 55
+                                },
+                                x: function (d) {
+                                    return d.label;
+                                },
+                                y: function (d) {
+                                    return d.value + (1e-10);
+                                },
+                                showValues: true,
+                                valueFormat: function (d) {
+                                    return d3.format(',.0f')(d);
+                                },
+                                duration: 500,
+                                xAxis: {
+                                    axisLabel: 'xAxis'
+                                },
+                                yAxis: {
+                                    axisLabel: 'yAxis',
+                                    axisLabelDistance: -10
+                                },
+                                deepWatchData: false,
+//                                discretebar: {
+//                                    dispatch: {
+//                                        elementClick: function (t, u) {
+//                                            console.log('elementClick');
+//                                            console.log(t);
+//                                        },
+//                                        elementDblClick: function (t, u) {
+//                                            console.log('elementDblClick');
+//                                        }
+//                                    }
+//                                },
+                                tooltip: {
+                                    valueFormatter: function (d, i) {
+                                        return d3.format(',.0f')(d);
+                                    }
+                                }
+                            }
+                        };
+                    },
+                    multibarChart: function () {
                         return {
                             chart: {
                                 type: 'multiBarChart',
@@ -187,8 +235,8 @@ angular.module('myApp')
                             maxVisibleColumnCount: 100000,
                             paginationPageSizes: [10, 25, 50, 100],
                             paginationPageSize: 10,
-                            data: 'result',
-                            //columnDefs: [{field: 'name', displayName: 'Name'}]
+                            data: 'result'
+                                    //columnDefs: [{field: 'name', displayName: 'Name'}]
                         };
                     }
                 };

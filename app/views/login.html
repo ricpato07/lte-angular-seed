@@ -1,3 +1,4 @@
+<message></message>
 <div class="hold-transition login-page background_login">
     <div class="login-box">
         <div class="login-box-body">
@@ -6,17 +7,17 @@
             </div>
             <p class="login-box-msg">Coloca tus datos de acceso</p>
             <div ng-form="forma.form">
-                <div class="form-group has-feedback">
-                    <input ng-model="usuario.user" type="text" class="form-control" placeholder="Usuario">
+                <div class="form-group has-feedback" ng-class="{'has-error': forma.form.user.$invalid && forma.form.user.$touched}">
+                    <input id="user" name="user" ng-model="usuario.user" type="text" class="form-control" placeholder="Usuario" required>
                     <span class="glyphicon glyphicon-user form-control-feedback"></span>
                 </div>
-                <div class="form-group has-feedback">
-                    <input ng-model="usuario.password" type="password" class="form-control" placeholder="Contraseña">
+                <div class="form-group has-feedback" ng-class="{'has-error': forma.form.password.$invalid && forma.form.password.$touched}">
+                    <input id="password" name="password" ng-model="usuario.password" type="password" class="form-control" placeholder="Contraseña" required>
                     <span class="glyphicon glyphicon-lock form-control-feedback"></span>
                 </div>
                 <div class="row">
                     <div class="col-xs-4">
-                        <button type="button" ng-click="ingresar()" class="btn btn-primary btn-block btn-flat">Ingresar</button>
+                        <button type="button" ng-click="ingresar()" ng-disabled="forma.form.$invalid" class="btn btn-primary btn-block btn-flat">Ingresar</button>
                     </div>
                 </div>
             </div>

@@ -10,15 +10,16 @@ angular.module('myApp', [
     'ui.bootstrap',
     'naif.base64',
     'webcam',
-    'angular-bind-html-compile'
+    'angular-bind-html-compile',
+    'nvd3'
 ])
-        .config(['$stateProvider', '$urlRouterProvider', 'configuration', '$httpProvider', 'RestangularProvider','$provide',
-            function ($stateProvider, $urlRouterProvider, configuration, $httpProvider, RestangularProvider,$provide) {
+        .config(['$stateProvider', '$urlRouterProvider', 'configuration', '$httpProvider', 'RestangularProvider', '$provide',
+            function ($stateProvider, $urlRouterProvider, configuration, $httpProvider, RestangularProvider, $provide) {
 
                 RestangularProvider.setBaseUrl(configuration.apiEndpoint);
 
                 $httpProvider.interceptors.push('myMaskInterceptor');
-                
+
                 //configurar ui-grid para que tenga textos en español
                 $provide.decorator('GridOptions', ['$delegate', 'i18nService', function ($delegate, i18nService) {
                         var gridOptions;
@@ -35,7 +36,7 @@ angular.module('myApp', [
 
                 $urlRouterProvider.otherwise('/login');
                 $stateProvider
-                         .state('login', {
+                        .state('login', {
                             url: '/login',
                             templateUrl: 'views/login.html',
                             controller: 'LoginController'
@@ -58,20 +59,54 @@ angular.module('myApp', [
                             templateUrl: 'views/panel/tarjeta_basica.html',
                             controller: 'TarjetaBasicaController'
                         })
-                         .state('app.tarjeta_basicat', {
+                        .state('app.tarjeta_basicat', {
                             url: '/tarjeta_basicat',
                             templateUrl: 'views/panel/tarjeta_basicat.html',
                             controller: 'TarjetaBasicaController'
                         })
-                         .state('app.consulta_tarjetas', {
+                        .state('app.consulta_tarjetas', {
                             url: '/consulta_tarjetas',
                             templateUrl: 'views/panel/consulta_tarjetas.html',
                             controller: 'ConsultaTarjetaController'
                         })
-                          .state('app.consulta_tarjetas_grid', {
+                        .state('app.consulta_tarjetas_grid', {
                             url: '/consulta_tarjetas_grid',
                             templateUrl: 'views/panel/consulta_tarjetas_grid.html',
                             controller: 'ConsultaTarjetagridController'
                         })
+                        .state('app.graficas', {
+                            url: '/graficas',
+                            templateUrl: 'views/panel/graficas.html',
+                            controller: 'GraficasController'
+                        })
+                        .state('app.paginax', {
+                            url: '/paginax'
+                        })
+
+            }])
+        .run(['$rootScope', '$state', '$http', 'AuthService', function ($rootScope, $state, $http, AuthService) {
+                var shouldSkip = false;
+                $rootScope.$on('$stateChangeStart', function (event, toState, toParams, fromState, fromParams) {
+
+                    if (shouldSkip)
+                        return;
+                    if (toState.name === "login")
+                        return;
+
+                    event.preventDefault();
+                    var bencontrado = AuthService.validaPermiso(toState.name);
+
+                    shouldSkip = true;
+                    if (!bencontrado) {
+                        $state.go("app.404");
+                    } else {
+                        $state.go(toState);
+                    }
+
+                });
+                $rootScope.$on('$stateChangeSuccess',
+                        function (event, toState, toParams, fromState, fromParams) {
+                            shouldSkip = false;
+                        });
 
             }]);

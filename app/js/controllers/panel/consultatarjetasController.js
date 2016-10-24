@@ -66,10 +66,10 @@ angular.module('myApp')
 
 
             }])
-        .controller('modalController',['$scope','$modalInstance', function ($scope, $modalInstance) {
+        .controller('modalController', ['$scope', '$modalInstance', function ($scope, $modalInstance) {
 
-            $scope.close = function () {
-                $modalInstance.close();
-            };
+                $scope.close = function () {
+                    $modalInstance.close();
+                };
 
-        }]);
+            }]);

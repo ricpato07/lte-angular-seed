@@ -1,11 +1,11 @@
 'use strict';
 
 angular.module('myApp')
-        .controller('TarjetaBasicaController', ['$scope', 'ValidaService', 'ConsultaService', 'WebCamService', 'MessageService', 'AuthService', 'CalendarService',
-            function ($scope, ValidaService, ConsultaService, WebCamService, MessageService, AuthService, CalendarService) {
+        .controller('TarjetaBasicaController', ['$scope', 'ValidaService', 'ConsultaService', 'WebCamService', 'MessageService', 'CalendarService',
+            function ($scope, ValidaService, ConsultaService, WebCamService, MessageService, CalendarService) {
 
-                AuthService.isLoggedIn();
-                
+                                
+                MessageService.iniScope($scope);
                 $scope.cat = {};
                 $scope.forma = {};
                 $scope.calendar = CalendarService.getOptions($scope);
@@ -32,6 +32,8 @@ angular.module('myApp')
                     ConsultaService.getLocalJSON(name)
                             .then(function (result) {
                                 $scope.tiposidlist = result.data;
+                                //dato de prueba
+                                $scope.cat.tipo_id = "1";
                             })
                             .catch(function (err) {
                                 console.log("Exception: ", err);
@@ -47,7 +49,6 @@ angular.module('myApp')
                 $scope.cat.nombre_m_tarjeta = "JUAN CARLOS SANTANA FLOR";
                 $scope.cat.fecha_nacimiento = new Date();
                 $scope.cat.rfc = "FESW840526";
-                $scope.cat.tipo_id = 1;
                 $scope.cat.num_id = 11122222;
                 $scope.cat.vigencia = 2018;
                 $scope.cat.domicilio = "Domicilio conocido";
@@ -198,20 +199,20 @@ angular.module('myApp')
 //                    ConsultaService.setRestAngular(metodo, parameters)
 //                            .then(function (res) {
 //                                $scope.limpiar();
-//                                MessageService.success($scope, res.descripcion);
+//                                MessageService.success(res.descripcion);
 //                            })
 //                            .catch(function (err) {
 //                                console.log("Exception: ", err);
 //                                if (err.data !== null) {
-//                                    MessageService.error($scope, err.data.descripcion);
+//                                    MessageService.error(err.data.descripcion);
 //                                } else {
 //                                    $scope.message = {};
-//                                    MessageService.error($scope, "Ocurrió un error con el servidor");
+//                                    MessageService.error("Ocurrió un error con el servidor");
 //                                }
 //                            });
 
                     $scope.limpiar();
-                    MessageService.success($scope, "Datos guardados correctamente");
+                    MessageService.success("Datos guardados correctamente");
 
                 };
 

@@ -1,0 +1,35 @@
+<div class="content-wrapper">
+    <div ui-view>
+        <section class="content-header">
+            <h4>
+                Gráficas
+            </h4>
+        </section>
+        <section class="content">
+            <div class="row">
+                <div class="col-lg-6 col-md-offset-0">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <i class="ion ion-ios-paper-outline"></i>
+                            <h3 class="box-title">Gráfica de pie</h3>
+                        </div>
+                        <div class="box-body">
+                            <nvd3 options="options_pie" data="data_pie"></nvd3>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-6 col-md-offset-0">
+                    <div class="box box-primary">
+                        <div class="box-header">
+                            <i class="ion ion-ios-paper-outline"></i>
+                            <h3 class="box-title">Gráfica de barras</h3>
+                        </div>
+                        <div class="box-body">
+                            <nvd3 options="options_bar" data="data_bar" api="api" on-ready="callback"></nvd3>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </div>
+</div>

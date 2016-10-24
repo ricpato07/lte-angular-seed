@@ -34,7 +34,8 @@
         "webcam-directive": "~3.0.0",
         "angular-base64-upload": "~0.1.11",
         "angular-bind-html-compile": "^1.3.0",
-        "alasql": "^0.3.2"
+        "alasql": "^0.3.2",
+        "angular-nvd3": "^1.0.9"
     },
      "private": true
 }

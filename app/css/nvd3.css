@@ -1,0 +1,8 @@
+/*quitar opacidad de la gráficas de pie*/
+.nvd3.nv-pie path {
+    fill-opacity: 1; 
+}
+/*quitar opacidad de la gráficas de barras*/
+.nvd3 .nv-multibar .nv-groups rect, .nvd3 .nv-multibarHorizontal .nv-groups rect, .nvd3 .nv-discretebar .nv-groups rect{
+    fill-opacity: 1; 
+}

@@ -1,6 +1,6 @@
 <div class="content-wrapper">
     <div ui-view>
-        <div bind-html-compile="message.html"></div>
+        <message></message>
         <section class="content-header">
             <h3>
                 Solicitud de tarjeta básica
@@ -72,19 +72,19 @@
                                             <label for="fecha_nacimiento">Fecha de nacimiento</label>
                                             <input id="fecha_nacimiento" name="fecha_nacimiento" 
                                                    type="text" class="form-control" 
-                                                   datepicker-popup="{{format}}" 
+                                                   datepicker-popup="{{calendar.format}}" 
                                                    ng-model="cat.fecha_nacimiento" 
                                                    is-open="calendar.opened1"  
                                                    ng-readonly="false"
-                                                   datepicker-options="dateOptions" 
-                                                   date-disabled="disabled(date, mode)"
+                                                   datepicker-options="calendar.dateOptions" 
+                                                   date-disabled="calendar.disabled(date, mode)"
                                                    current-text="Hoy" 
                                                    clear-text="Limpiar"
                                                    close-text="Cerrar" 
                                                    placeholder="dd/mm/aaaa"
                                                    required/>
                                             <span class="input-group-btn">
-                                                <button type="button" class="btn btn-default" ng-click="open($event, 'opened1')" tooltip="Seleccionar fecha"><i class="glyphicon glyphicon-calendar"></i></button>
+                                                <button type="button" class="btn btn-default" ng-click="calendar.open($event, 'opened1')" tooltip="Seleccionar fecha"><i class="glyphicon glyphicon-calendar"></i></button>
                                             </span>
                                         </div>
                                     </div>
@@ -321,6 +321,6 @@
                 </div>
             </div>
         </section> 
-        <div bind-html-compile="message.html"></div>
+        <message></message>
     </div>  
 </div>

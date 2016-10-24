@@ -93,17 +93,14 @@ angular.module('myApp')
                     },
                     /** 
                      * @description
-                     * Método que obtiene la ruta absoluta del sitio
+                     * Método que obtiene la ruta absoluta del sitio hasta el símbolo de # ejemplo: http://localhost:3000/
                      * 
-                     * @param {string} url url que se agrega a la ruta absoluta ejem:url=/resources/ quedaría como: http://localhost:3000/resources/
-                     * @returns {json} url absoluta con el url al final de la dirección
+                     * @returns {json} url absoluta
                      */
-                    getAbsoluteUrl: function (url) {
-                        var a;
-                        if (!a)
-                            a = document.createElement('a');
-                        a.href = url;
-                        return a.href;
+                    getAbsoluteUrl: function () {
+                        var path = window.location.href;
+                        path = path.substring(0, path.lastIndexOf("#"));
+                        return path;
                     },
                     /** 
                      * @description
@@ -113,7 +110,8 @@ angular.module('myApp')
                      * @returns {promise} información del llamado como promise para la información se obtiene como data
                      */
                     getLocalJSON: function (name) {
-                        return $http.get(this.getAbsoluteUrl("/resources/") + name + '.json');
+                        var url_json = this.getAbsoluteUrl() + "resources/" + name + '.json';
+                        return $http.get(url_json);
                     }
                 }
             }]);
