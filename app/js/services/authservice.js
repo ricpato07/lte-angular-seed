@@ -22,6 +22,7 @@ angular.module('myApp')
                         var session = this.getSession();
                         if (session === null) {
                             $state.go('login');
+                            return false;
                         }
                         return true;
                     },
@@ -41,20 +42,19 @@ angular.module('myApp')
                         }
                     },
                     validaPermiso: function (permiso) {
+                        //0: no encontrado, 1: encontrado
                         if (this.isLoggedIn()) {
-                            var bencontrado = false;
+                            var bencontrado = 0;
                             var session = this.getSession();
-                            if (session !== null) {
-                                var permisos = session.permisos;
-                            }
+                            var permisos = session.permisos;
                             for (var i = 0; i < permisos.length; i++) {
                                 if (permiso.indexOf(permisos[i].permiso) !== -1) {
-                                    bencontrado = true;
+                                    bencontrado = 1;
                                     break;
                                 }
                             }
                             return bencontrado;
-                        }
+                        } 
                     }
                 };
             }]);

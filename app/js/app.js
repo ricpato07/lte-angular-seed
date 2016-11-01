@@ -11,14 +11,21 @@ angular.module('myApp', [
     'naif.base64',
     'webcam',
     'angular-bind-html-compile',
-    'nvd3'
+    'nvd3',
+    'ngIdle'
 ])
-        .config(['$stateProvider', '$urlRouterProvider', 'configuration', '$httpProvider', 'RestangularProvider', '$provide',
-            function ($stateProvider, $urlRouterProvider, configuration, $httpProvider, RestangularProvider, $provide) {
+        .config(['$stateProvider', '$urlRouterProvider', 'configuration', '$httpProvider', 'RestangularProvider', '$provide', 'IdleProvider',
+            function ($stateProvider, $urlRouterProvider, configuration, $httpProvider, RestangularProvider, $provide, IdleProvider) {
 
                 RestangularProvider.setBaseUrl(configuration.apiEndpoint);
 
                 $httpProvider.interceptors.push('myMaskInterceptor');
+
+//                IdleProvider.idle(5 * 60);  // 5 minutos
+//                IdleProvider.timeout(10 * 60); // 10 minutos
+
+                IdleProvider.idle(1 * 60);  // 1 minuto
+                IdleProvider.timeout(3 * 60); // 3 minutos
 
                 //configurar ui-grid para que tenga textos en español
                 $provide.decorator('GridOptions', ['$delegate', 'i18nService', function ($delegate, i18nService) {
@@ -44,7 +51,13 @@ angular.module('myApp', [
                         .state('app', {
                             url: '/panel',
                             templateUrl: 'views/panel/layout.html',
-                            controller: 'MainController'
+                            controller: 'MainController',
+                            resolve: {
+                                timeout: function (Idle) {
+                                    console.log("timeout");
+                                    Idle.watch();
+                                }
+                            }
                         })
                         .state('app.404', {
                             url: '/404',
@@ -96,13 +109,13 @@ angular.module('myApp', [
                     event.preventDefault();
                     var bencontrado = AuthService.validaPermiso(toState.name);
 
-                    shouldSkip = true;
-                    if (!bencontrado) {
+                    if (bencontrado === 0) {
+                        shouldSkip = true;
                         $state.go("app.404");
-                    } else {
+                    } else if (bencontrado === 1) {
+                        shouldSkip = true;
                         $state.go(toState);
                     }
-
                 });
                 $rootScope.$on('$stateChangeSuccess',
                         function (event, toState, toParams, fromState, fromParams) {

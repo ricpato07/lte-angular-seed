@@ -41,7 +41,7 @@ var path = {
     ico: 'app/favicon.ico',
     _404: 'app/404.html'
 };
-var f = filter(['**/*.woff','**/*.woff2','**/*.ttf','**/*.eot','**/*.svg','**/*.ttf'],{restore: true});
+var f = filter(['**/*.woff','**/*.woff2','**/*.ttf','**/*.eot','**/*.svg','**/*.otf'],{restore: true});
 
 /*
  * Configuración de las tareas
@@ -59,8 +59,14 @@ gulp.task('js_css', function () {
             .pipe(gulp.dest('dist'));
 });
 
+gulp.task('fonts_bootstrap', function () {
+    return gulp.src(path.bootstrap)
+            .pipe(f)
+            .pipe(gulp.dest('dist/fonts'));
+});
+
 gulp.task('fonts_awesome', function () {
-    return gulp.src([path.fonts_awesome,path.ionicons,path.bootstrap])
+    return gulp.src([path.fonts_awesome,path.ionicons])
             .pipe(f)
             .pipe(gulp.dest('dist/fonts'));
 });
@@ -71,7 +77,7 @@ gulp.task('fonts_ui_grid', function () {
             .pipe(gulp.dest('dist/css'));
 });
 
-gulp.task('fonts', ['fonts_awesome', 'fonts_ui_grid']);
+gulp.task('fonts', ['fonts_awesome', 'fonts_ui_grid','fonts_bootstrap']);
 
 gulp.task('html', function () {
     return gulp.src(path.html)

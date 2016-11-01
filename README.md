@@ -4,7 +4,8 @@ Template admin-lte para Angular 1.5.8 con las siguientes funcionalidades:
 - Template con menu izquierdo, header, footer y area para carga de páginas.
 - Login que redirige a la página de inicio e inicia una sesión en el navegador. 
   * Si no se colocan datos mostrará mensaje de advertencia
-- Manejo de sesiones, esta durará hasta que se haga logout o se cierre el navegador.
+- Manejo de sesiones, esta durará hasta que se haga logout, se cierre el navegador o 
+  expire el tiempo de la sesión el cual es configurable
   * Acceso a páginas de acuerdo a permisos del usuario
 - Formulario con validaciones de campos.
   * Webcam para navegador
@@ -16,6 +17,7 @@ Template admin-lte para Angular 1.5.8 con las siguientes funcionalidades:
   * Mostar filtros para buscar en la tabla
   * Exportar a Excel valores de la tabla
 - Genera las gráficas de pie y de barras
+- Configuración del archivo gulp para generar el proyecto compilado para subir a un servidor.
 
 
 Utiliza las siguientes librerias
@@ -34,6 +36,7 @@ Utiliza las siguientes librerias
 - **"angular-bind-html-compile": "^1.3.0"** Libreria para renderizar el código html de un string
 - **"alasql": "^0.3.2"** Librería que exporta un json a Excel
 - **"angular-nvd3": "^1.0.9"** Librería que genera gráficas
+- **"ng-idle": "~1.1.0"** Librería para medir el tiempo de inactividad en la página 
 
 ### Clonar proyecto
 
